@@ -7,6 +7,10 @@ const prisma = new PrismaClient();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Express on Vercel!');
+});
+
 app.get('/notes', async (req, res) => {
     const notes = await prisma.notes.findMany();
     res.status(200).json({
