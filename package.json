@@ -1,0 +1,18 @@
+{
+  "name": "viapulsa-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "prisma:push": "prisma db push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "express": "^4.19.2",
+    "prisma": "^5.15.0"
+  }
+}
