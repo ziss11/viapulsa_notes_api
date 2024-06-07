@@ -1,15 +1,11 @@
 const { PrismaClient } = require('@prisma/client');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const prisma = new PrismaClient();
 
 app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.send('Express on Vercel!');
-});
 
 app.get('/notes', async (req, res) => {
     const notes = await prisma.notes.findMany();
@@ -55,3 +51,5 @@ app.delete('/notes/:id', async (req, res) => {
 });
 
 app.listen(port);
+
+module.exports = app;
