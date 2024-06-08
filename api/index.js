@@ -8,7 +8,19 @@ const prisma = new PrismaClient();
 app.use(express.json());
 
 app.get('/notes', async (req, res) => {
-    const notes = await prisma.notes.findMany();
+    const { query } = req.params;
+
+    let where = {};
+    if (query) {
+        where = {
+            OR: [
+                { title: { contains: query || '' } },
+                { description: { contains: query || '' } },
+            ],
+        };
+    }
+
+    const notes = await prisma.notes.findMany({ where });
     res.status(200).json({
         status: 'success',
         data: notes,
