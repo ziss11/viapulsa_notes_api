@@ -54,7 +54,10 @@ app.patch('/notes/:id', async (req, res) => {
     const { id } = req.params;
     const note = await prisma.notes.update({
         where: { id },
-        data: req.body,
+        data: {
+            ...req.body,
+            updatedAt: new Date(),
+        },
     });
     res.status(200).json({
         status: 'success',
