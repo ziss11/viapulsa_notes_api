@@ -1,8 +1,9 @@
 {
   "name": "viapulsa-api",
   "version": "1.0.0",
-  "main": "./src/index.js",
+  "main": "./api/index.js",
   "scripts": {
+    "start": "node ./api/index.js",
     "prisma:push": "prisma db push",
     "postinstall": "prisma generate"
   },
