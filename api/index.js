@@ -39,17 +39,6 @@ app.get('/notes', async (req, res) => {
     });
 });
 
-app.get('/notes/:id', async (req, res) => {
-    const { id } = req.params;
-    const note = await prisma.notes.findFirst({
-        where: { id },
-    });
-    res.status(200).json({
-        status: 'success',
-        data: note,
-    });
-});
-
 app.post('/notes', async (req, res) => {
     const note = await prisma.notes.create({
         data: req.body,
